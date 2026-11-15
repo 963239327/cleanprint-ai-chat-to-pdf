@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "CleanPrint & AI-Chat to PDF Studio",
+  "short_name": "CleanPrint",
+  "version": "1.0.0",
+  "description": "Purify web articles & AI chats (ChatGPT, Claude, Copilot) into crisp, ink-saving vector PDFs. 100% local, zero tracking.",
+  "homepage_url": "https://963239327.github.io/craftleaf-studio/extensions/cleanprint/",
+  "minimum_chrome_version": "109",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "CleanPrint & AI-Chat to PDF Studio",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

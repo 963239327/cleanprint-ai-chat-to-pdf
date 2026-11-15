@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CleanPrint &amp; AI-Chat to PDF Studio</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup-shell">
+    <header class="topbar">
+      <div class="brand-group">
+        <img src="icons/icon48.png" alt="CleanPrint" class="brand-icon" width="28" height="28" />
+        <div>
+          <div class="brand-title">CleanPrint Studio</div>
+          <div class="brand-sub" id="statusPlatform">100% Local · Zero Tracking</div>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span class="tier-pill" id="tierBadge">FREE</span>
+        <button type="button" class="lang-btn" id="langBtn" title="Switch Language">中文</button>
+      </div>
+    </header>
+
+    <section class="metrics-bar" id="metricsBar">
+      <div class="metric-chip">
+        <span class="metric-val" id="metricClutter">--</span>
+        <span class="metric-lbl" data-i18n="clutterRemoved">Clutter Stripped</span>
+      </div>
+      <div class="metric-chip">
+        <span class="metric-val emerald" id="metricInk">~58%</span>
+        <span class="metric-lbl" data-i18n="inkSaved">Est. Ink Saved</span>
+      </div>
+      <div class="metric-chip">
+        <span class="metric-val" id="metricPages">~2p</span>
+        <span class="metric-lbl" data-i18n="cleanPages">Vector Pages</span>
+      </div>
+    </section>
+
+    <div class="notice-banner hidden" id="restrictedBanner">
+      <span id="restrictedText">Open any web article, GitHub doc, or AI chat tab (ChatGPT, Claude, Copilot) to purify &amp; print.</span>
+    </div>
+
+    <section class="card primary-actions-card">
+      <button type="button" class="btn btn-purify" id="btnPurify">
+        <span class="btn-icon">✨</span>
+        <span id="btnPurifyLabel" data-i18n="purifyBtn">Purify Article / AI Chat</span>
+      </button>
+      <button type="button" class="btn btn-print" id="btnPrint">
+        <span class="btn-icon">🖨️</span>
+        <span data-i18n="printPdfBtn">Instant Print / Save Vector PDF</span>
+      </button>
+    </section>
+
+    <section class="card controls-card">
+      <div class="section-heading">
+        <span data-i18n="freeControlsTitle">CLEAN READER &amp; ECO INK</span>
+      </div>
+
+      <label class="toggle-row" for="chkLowInk">
+        <div class="toggle-copy">
+          <span class="toggle-title" data-i18n="lowInkTitle">Eco Low-Ink Print Stylesheet</span>
+          <span class="toggle-desc" data-i18n="lowInkDesc">Strips dark fills &amp; terminal backgrounds; crisp borders</span>
+        </div>
+        <input type="checkbox" id="chkLowInk" checked />
+      </label>
+
+      <label class="toggle-row" for="chkHideImages">
+        <div class="toggle-copy">
+          <span class="toggle-title" data-i18n="hideImagesTitle">Hide Article Images</span>
+          <span class="toggle-desc" data-i18n="hideImagesDesc">Text &amp; code only for compact study handouts</span>
+        </div>
+        <input type="checkbox" id="chkHideImages" />
+      </label>
+
+      <div class="slider-row">
+        <div class="slider-header">
+          <span class="toggle-title" data-i18n="fontSizeTitle">Print Font Size</span>
+          <span class="slider-val" id="fontSizeVal">12pt</span>
+        </div>
+        <input type="range" id="rngFontSize" min="10" max="16" step="0.5" value="12" />
+      </div>
+    </section>
+
+    <section class="card pro-card" id="proSection">
+      <div class="section-heading pro-heading">
+        <span data-i18n="proStudioTitle">PRO MULTI-TAB &amp; BOOKLET STUDIO</span>
+        <span class="pro-tag" id="proLockLabel">PRO · $5.99</span>
+      </div>
+
+      <div class="queue-row">
+        <button type="button" class="btn btn-queue-clip" id="btnClipTab">
+          <span data-i18n="clipToQueueBtn">+ Clip Tab / Selection</span>
+        </button>
+        <button type="button" class="btn btn-queue-open" id="btnOpenQueue">
+          <span data-i18n="openQueueBtn">Queue &amp; TOC</span>
+          <span class="queue-count" id="queueCountBadge">0</span>
+        </button>
+      </div>
+      <div class="feedback-line" id="queueFeedback"></div>
+
+      <div class="field-row">
+        <label for="selTheme" class="toggle-title" data-i18n="themeTitle">Typography &amp; Booklet Theme</label>
+        <select id="selTheme" class="select-input">
+          <option value="standard" data-i18n="themeStandard">Modern Clean Sans (Free)</option>
+          <option value="academic-serif" data-i18n="themeAcademic">🔒 Academic Serif Paper (Pro)</option>
+          <option value="minimalist-swiss" data-i18n="themeSwiss">🔒 Minimalist Swiss Grid (Pro)</option>
+          <option value="study-two-col" data-i18n="themeTwoCol">🔒 Compact 2-Column Study Sheet (Pro)</option>
+          <option value="booklet-2up" data-i18n="themeBooklet">🔒 2-Up Landscape Booklet (Pro)</option>
+        </select>
+      </div>
+
+      <label class="toggle-row compact" for="chkRemoveHeaderFooter">
+        <div class="toggle-copy">
+          <span class="toggle-title" data-i18n="headerFooterTitle">Remove Browser URL/Date Headers</span>
+        </div>
+        <input type="checkbox" id="chkRemoveHeaderFooter" />
+      </label>
+
+      <div class="unlock-drawer" id="unlockDrawer">
+        <div class="unlock-pitch" id="unlockPitch" data-i18n="unlockPitch">
+          One-time $5.99 lifetime key — unlocks Multi-Tab PDF Queue + TOC, 4 Pro Themes &amp; Marginless Header Remover.
+        </div>
+        <div class="unlock-input-group">
+          <input
+            type="text"
+            id="inpLicenseKey"
+            class="key-input"
+            placeholder="CLEANPRO-XXXX-XXXX-XXXXXX"
+            spellcheck="false"
+            autocomplete="off"
+          />
+          <button type="button" class="btn btn-verify" id="btnVerifyKey" data-i18n="activateBtn">Unlock</button>
+        </div>
+        <div class="unlock-links">
+          <a href="https://963239327.github.io/craftleaf-studio/extensions/cleanprint/#pro" target="_blank" rel="noopener noreferrer" id="lnkBuyPro" data-i18n="getLicenseLink">Get Lifetime Key ($5.99) →</a>
+          <button type="button" class="text-link-btn" id="btnOpenOptions" data-i18n="optionsLink">Settings &amp; Privacy</button>
+        </div>
+        <div class="license-msg" id="licenseMsg"></div>
+      </div>
+    </section>
+
+    <footer class="popup-footer">
+      <span data-i18n="privacyFooter">Zero cloud uploads · Runs 100% offline in your browser</span>
+      <button type="button" class="text-link-btn" id="btnFooterOptions">⚙️</button>
+    </footer>
+  </div>
+
+  <script src="vendor/monetization-config.js"></script>
+  <script src="vendor/monetization-sdk.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

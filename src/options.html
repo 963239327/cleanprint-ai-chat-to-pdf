@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CleanPrint &amp; AI-Chat to PDF Studio — Options &amp; License</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="opt-container">
+    <header class="opt-header">
+      <div class="opt-brand">
+        <img src="icons/icon128.png" alt="CleanPrint" width="48" height="48" class="opt-logo" />
+        <div>
+          <h1>CleanPrint &amp; AI-Chat to PDF Studio</h1>
+          <p>v1.0.0 · 100% Local Manifest V3 Extension · By CraftLeaf &amp; Pixel Studio</p>
+        </div>
+      </div>
+      <span class="badge" id="optTierBadge">FREE EDITION</span>
+    </header>
+
+    <section class="opt-card">
+      <h2>🔑 Pro Lifetime License Activation ($5.99 One-Time)</h2>
+      <p class="muted">
+        Unlock the Multi-Article Print Queue Collector (with automatic Table of Contents), Academic Serif / Minimalist Swiss / Two-Column Study / 2-Up Booklet themes, and Marginless Browser Header/Footer Remover. Accepts both <code>CLEANPRO-...</code> and universal <code>STUDIOALL-...</code> keys offline, plus Gumroad keys.
+      </p>
+
+      <div class="key-bar">
+        <input type="text" id="optLicenseInput" placeholder="CLEANPRO-XXXX-XXXX-XXXXXX" spellcheck="false" autocomplete="off" />
+        <button type="button" class="btn btn-primary" id="optBtnVerify">Verify &amp; Activate</button>
+        <button type="button" class="btn btn-outline hidden" id="optBtnDeactivate">Reset Key</button>
+      </div>
+      <div class="status-msg" id="optLicenseStatus"></div>
+
+      <div class="links-row">
+        <a href="https://963239327.github.io/craftleaf-studio/extensions/cleanprint/#pro" target="_blank" rel="noopener noreferrer">Get CleanPrint Pro Key ($5.99 / ¥19.9) →</a>
+        <a href="queue-studio.html" target="_blank" rel="noopener noreferrer">Open Multi-Tab Print Queue Studio →</a>
+      </div>
+    </section>
+
+    <section class="opt-card">
+      <h2>🖨️ Default CleanPrint Preferences</h2>
+      <label class="pref-row" for="optLowInk">
+        <div>
+          <strong>Enable Eco Low-Ink Print Stylesheet by Default</strong>
+          <div class="muted-sm">Strips dark code terminal fills and colored backgrounds to save up to 65% toner/ink.</div>
+        </div>
+        <input type="checkbox" id="optLowInk" checked />
+      </label>
+
+      <label class="pref-row" for="optHideImages">
+        <div>
+          <strong>Hide Article Images by Default</strong>
+          <div class="muted-sm">Keep text, tables, and code blocks only for ultra-compact study handouts.</div>
+        </div>
+        <input type="checkbox" id="optHideImages" />
+      </label>
+
+      <div class="pref-row">
+        <div>
+          <strong>Default Print Font Size (pt)</strong>
+          <div class="muted-sm">Recommended: 11.5pt – 12.5pt for A4 &amp; US Letter readability.</div>
+        </div>
+        <input type="number" id="optFontSize" min="10" max="16" step="0.5" value="12" class="num-input" />
+      </div>
+
+      <div class="save-bar">
+        <button type="button" class="btn btn-primary" id="optBtnSavePrefs">Save Preferences</button>
+        <span class="save-toast" id="optSaveToast"></span>
+      </div>
+    </section>
+
+    <section class="opt-card privacy-card">
+      <h2>🛡️ Strict Zero-Data-Collection Privacy Guarantee</h2>
+      <ul class="privacy-list">
+        <li><strong>100% Local Processing:</strong> Every web article and AI chat conversation (ChatGPT, Claude, Copilot, DeepSeek, GitHub) is purified strictly inside your browser's local memory.</li>
+        <li><strong>Least-Privilege Permissions:</strong> Uses only <code>activeTab</code>, <code>scripting</code>, and <code>storage</code>. CleanPrint never runs in the background on pages you haven't clicked.</li>
+        <li><strong>Zero Analytics or Telemetry:</strong> No Google Analytics, no crash trackers, no external cloud PDF servers, and zero personal data collection.</li>
+      </ul>
+      <p class="muted-sm">
+        Full Public Privacy Policy:
+        <a href="https://963239327.github.io/craftleaf-studio/extensions/cleanprint/#privacy" target="_blank" rel="noopener noreferrer">https://963239327.github.io/craftleaf-studio/extensions/cleanprint/#privacy</a>
+      </p>
+    </section>
+  </div>
+
+  <script src="vendor/monetization-config.js"></script>
+  <script src="vendor/monetization-sdk.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

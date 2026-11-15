@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CleanPrint Pro — Multi-Article Print Queue &amp; Booklet Studio</title>
+  <link rel="stylesheet" href="queue-studio.css" />
+</head>
+<body>
+  <div class="studio-layout" id="studioRoot">
+    <aside class="studio-sidebar no-print">
+      <div class="sb-brand">
+        <img src="icons/icon48.png" alt="CleanPrint" width="32" height="32" class="sb-logo" />
+        <div>
+          <div class="sb-title">CleanPrint Queue Studio</div>
+          <div class="sb-sub">Multi-Tab PDF Binder &amp; TOC Compiler</div>
+        </div>
+      </div>
+
+      <div class="pro-gate-box" id="proGateBox">
+        <div class="pro-gate-title">🔒 Pro Feature — Unlock Lifetime ($5.99)</div>
+        <p class="pro-gate-copy">
+          Activate your offline <code>CLEANPRO-...</code> or <code>STUDIOALL-...</code> key to export multi-tab combined PDFs with auto Table of Contents &amp; Booklet themes.
+        </p>
+        <div class="pro-gate-row">
+          <input type="text" id="inpStudioKey" placeholder="CLEANPRO-XXXX-XXXX-XXXXXX" spellcheck="false" />
+          <button type="button" class="btn btn-emerald" id="btnStudioUnlock">Unlock</button>
+        </div>
+        <div class="pro-gate-links">
+          <a href="https://963239327.github.io/craftleaf-studio/extensions/cleanprint/#pro" target="_blank" rel="noopener noreferrer">Get Lifetime Key ($5.99 / ¥19.9) →</a>
+        </div>
+        <div class="gate-msg" id="studioGateMsg"></div>
+      </div>
+
+      <div class="sb-card">
+        <div class="sb-label">COMBINED DOCUMENT HEADER</div>
+        <input type="text" id="inpDocTitle" class="text-input" value="CleanPrint Research &amp; AI-Chat Compendium" placeholder="Binder Title" />
+        <input type="text" id="inpDocSubtitle" class="text-input mt-6" value="Compiled Locally with CleanPrint Studio · Vector Print Edition" placeholder="Optional Subtitle / Project Name" />
+      </div>
+
+      <div class="sb-card">
+        <div class="sb-label">LAYOUT &amp; TYPOGRAPHY THEME</div>
+        <select id="selStudioTheme" class="text-input">
+          <option value="academic-serif">Academic Serif Paper (Journal)</option>
+          <option value="standard">Modern Clean Sans</option>
+          <option value="minimalist-swiss">Minimalist Swiss Grid</option>
+          <option value="study-two-col">Compact Two-Column Study Sheet</option>
+          <option value="booklet-2up">2-Up Landscape Foldable Booklet</option>
+        </select>
+
+        <label class="chk-row mt-8" for="chkToc">
+          <span>Automatic Table of Contents</span>
+          <input type="checkbox" id="chkToc" checked />
+        </label>
+        <label class="chk-row" for="chkPageBreak">
+          <span>Start Each Clip on New Page</span>
+          <input type="checkbox" id="chkPageBreak" />
+        </label>
+        <label class="chk-row" for="chkStudioLowInk">
+          <span>Eco Low-Ink Stylesheet</span>
+          <input type="checkbox" id="chkStudioLowInk" checked />
+        </label>
+        <label class="chk-row" for="chkStudioHideImg">
+          <span>Hide Article Images</span>
+          <input type="checkbox" id="chkStudioHideImg" />
+        </label>
+        <label class="chk-row" for="chkStudioMarginless">
+          <span>Remove Browser URL/Date Headers</span>
+          <input type="checkbox" id="chkStudioMarginless" checked />
+        </label>
+
+        <div class="slider-wrap mt-8">
+          <div class="slider-top">
+            <span>Body Font Size</span>
+            <strong id="lblStudioFont">11.5pt</strong>
+          </div>
+          <input type="range" id="rngStudioFont" min="9.5" max="15.5" step="0.5" value="11.5" />
+        </div>
+      </div>
+
+      <div class="sb-card queue-list-card">
+        <div class="sb-row-between">
+          <span class="sb-label mb-0">CLIPPED TABS (<span id="lblClipCount">0</span>)</span>
+          <div class="mini-btns">
+            <button type="button" class="mini-btn" id="btnLoadSample">+ Sample Pack</button>
+            <button type="button" class="mini-btn danger" id="btnClearQueue">Clear</button>
+          </div>
+        </div>
+        <div class="clip-items" id="clipItemsList"></div>
+      </div>
+
+      <button type="button" class="btn btn-print-main" id="btnPrintCombined">
+        🖨️ Print / Save Combined Vector PDF
+      </button>
+      <div class="sb-foot-note" id="printStatusHint">
+        100% offline local compilation · Select "Save as PDF" in system print dialog.
+      </div>
+    </aside>
+
+    <main class="studio-stage">
+      <article class="binder-sheet" id="binderSheet"></article>
+    </main>
+  </div>
+
+  <script src="vendor/monetization-config.js"></script>
+  <script src="vendor/monetization-sdk.js"></script>
+  <script src="queue-studio.js"></script>
+</body>
+</html>
