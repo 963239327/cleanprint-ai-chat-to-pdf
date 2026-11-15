@@ -492,7 +492,7 @@
             renderAll();
           });
         } else {
-          msg.textContent = 'Invalid key checksum. Check CLEANPRO-XXXX-XXXX-XXXXXX.';
+          msg.textContent = 'Invalid key checksum. Check XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX.';
         }
       });
     });

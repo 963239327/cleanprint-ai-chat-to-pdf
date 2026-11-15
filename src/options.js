@@ -104,7 +104,7 @@
             renderLicenseUi({ unlocked: true, mode: 'gumroad' });
           });
         } else {
-          statusEl.textContent = 'Invalid license key. Expected CLEANPRO-XXXX-XXXX-XXXXXX or STUDIOALL-...';
+          statusEl.textContent = 'Invalid license key. Expected XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX or STUDIOALL-...';
           statusEl.className = 'status-msg err';
         }
       });

@@ -52,7 +52,7 @@
       clippedOk: 'Clipped to Print Queue! Total items: ',
       clippedSelOk: 'Clipped highlighted selection! Total items: ',
       keyValidMsg: 'Pro Studio Unlocked! Lifetime features active.',
-      keyInvalidMsg: 'Invalid key. Expected CLEANPRO-XXXX-XXXX-XXXXXX or STUDIOALL-...'
+      keyInvalidMsg: 'Invalid key. Expected XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX or STUDIOALL-...'
     },
     zh: {
       clutterRemoved: '移除广告杂项',

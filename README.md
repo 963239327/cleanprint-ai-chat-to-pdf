@@ -2,21 +2,21 @@
 
 <img src="./assets/icon_128x128.png" alt="CleanPrint & AI-Chat to PDF Studio Logo" width="88" />
 
-# CleanPrint — Export ChatGPT & Claude to Clean Vector PDF (Ink-Saver Browser Extension)
+# CleanPrint — Export ChatGPT, Claude, DeepSeek, Perplexity & Gemini to Clean Vector PDF & Markdown (`v1.1.0`)
 
-**Export ChatGPT to PDF without cut off code blocks, print Claude conversations as clean vector PDFs, and purify dark-mode engineering docs with a 100% local dark mode ink saver browser extension.**
+**Export ChatGPT, Claude, DeepSeek, Perplexity & Gemini conversations to crisp vector PDFs (without cut-off code blocks) OR 1-click Obsidian/Notion Markdown (`.md`), using a 100% local dark-mode ink-saver browser extension.**
 
-[![Install on Mozilla Firefox Add-ons](https://img.shields.io/badge/Firefox_Add--ons-Install_Official_v1.0.0-FF7139?style=for-the-badge&logo=firefoxbrowser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/cleanprint-ai-chat-to-pdf/)
-[![Download Chrome / Edge / Brave ZIP](https://img.shields.io/badge/Chrome_%2F_Edge_%2F_Brave-Download_v1.0.0_.ZIP-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/download/v1.0.0/cleanprint-studio-edge-chromium-v1.0.0.zip)
+[![Install on Mozilla Firefox Add-ons](https://img.shields.io/badge/Firefox_Add--ons-Official_AMO_Listing-FF7139?style=for-the-badge&logo=firefoxbrowser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/cleanprint-ai-chat-to-pdf/)
+[![Download Chrome / Edge / Brave ZIP](https://img.shields.io/badge/Chrome_%2F_Edge_%2F_Brave-Download_v1.1.0_.ZIP-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/download/v1.1.0/cleanprint-studio-edge-chromium-v1.1.0.zip)
 [![Interactive Web Preview](https://img.shields.io/badge/Interactive_Preview-Try_In_Browser-10b981?style=for-the-badge&logo=safari&logoColor=white)](https://963239327.github.io/craftleaf-studio/extensions/cleanprint/)
 [![CleanPrint Pro Lifetime](https://img.shields.io/badge/CleanPrint_Pro-%245.99_Lifetime_Key-f59e0b?style=for-the-badge)](https://stardustdemo.gumroad.com/l/cleanprint-pro)
 
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3_(Least_Privilege)-success)
-![Zero Cloud Calls](https://img.shields.io/badge/Network_Calls-0_(100%25_Local_DOM)-blue)
+![Zero Cloud Calls](https://img.shields.io/badge/Content_Purifier-100%25_Local_DOM-blue)
 ![Zero innerHTML](https://img.shields.io/badge/CSP_Safe-Zero_innerHTML-0d9488)
 ![License MIT](https://img.shields.io/badge/License-MIT-brightgreen)
 
-[**Firefox Add-ons (Official) →**](https://addons.mozilla.org/en-US/firefox/addon/cleanprint-ai-chat-to-pdf/) · [**Chrome / Edge / Brave `.zip` →**](#install-on-chrome-microsoft-edge-brave--arc-v100) · [**Interactive Web Preview →**](https://963239327.github.io/craftleaf-studio/extensions/cleanprint/) · [**CleanPrint Pro ($5.99) →**](#free-vs-cleanprint-pro-comparison)
+[**Direct v1.1.0 Release →**](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/tag/v1.1.0) · [**Chrome / Edge / Brave `.zip` →**](#option-2-install-on-chrome-microsoft-edge-brave--arc-v110) · [**Interactive Web Preview →**](https://963239327.github.io/craftleaf-studio/extensions/cleanprint/) · [**CleanPrint Pro ($5.99) →**](#free-vs-cleanprint-pro-comparison)
 
 </div>
 
@@ -44,6 +44,7 @@ Anyone who has tried to **export ChatGPT to PDF without cut off code blocks** or
 ## Key Features (100% Local & Privacy-First)
 
 - **AI Chat Turn Extractor**: Automatically detects User Prompts vs. Assistant Responses across **ChatGPT**, **Claude**, **GitHub / Microsoft Copilot**, **Gemini**, **DeepSeek**, and **Perplexity**, formatting each turn with clear speaker badges (`PROMPT #1`, `RESPONSE #2`) and accent borders.
+- **1-Click Clean Markdown (`.md`) Export (`v1.1.0`)**: Save any purified AI chat or technical article directly as an Obsidian / Notion / Logseq ready `.md` file with YAML frontmatter (`title`, `source`, `platform`, `exported_at`) and fenced code blocks.
 - **Zero Cut-Off Code Blocks & Tables**: Replaces horizontal scrollbars with intelligent wrapping, language header badges (`SQL`, `PYTHON`, `TYPESCRIPT`, `BASH`), and `break-inside: avoid` pagination guards.
 - **Dark Mode Ink Saver Stylesheet**: Strips dark UI backgrounds, cookie banners, sticky navbars, sidebars, ads, and comment widgets while preserving crisp monospace typography.
 - **True Selectable Vector PDFs**: Uses your browser's native vector PDF engine—never blurry canvas screenshots—so exported PDFs remain searchable, copy-pasteable, and lightweight (`~80 KB` instead of `15 MB` PNGs).
@@ -61,11 +62,11 @@ Anyone who has tried to **export ChatGPT to PDF without cut off code blocks** or
 Install directly from Mozilla Add-ons (signed & verified):
 👉 **[CleanPrint & AI-Chat to PDF Studio on Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/cleanprint-ai-chat-to-pdf/)**
 
-*(Or download [`cleanprint-studio-firefox-amo-v1.0.0.zip`](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/download/v1.0.0/cleanprint-studio-firefox-amo-v1.0.0.zip) from [Releases](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/tag/v1.0.0)).*
+*(Or download [`cleanprint-studio-firefox-amo-v1.1.0.zip`](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/download/v1.1.0/cleanprint-studio-firefox-amo-v1.1.0.zip) from [Releases (`v1.1.0`)](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/tag/v1.1.0)).*
 
-### Option 2: Install on Chrome, Microsoft Edge, Brave & Arc (`v1.0.0`)
+### Option 2: Install on Chrome, Microsoft Edge, Brave & Arc (`v1.1.0`)
 Load the unpacked Manifest V3 release in 20 seconds:
-1. Download **[`cleanprint-studio-edge-chromium-v1.0.0.zip`](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/download/v1.0.0/cleanprint-studio-edge-chromium-v1.0.0.zip)** from [GitHub Releases (`v1.0.0`)](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/tag/v1.0.0) and unzip it to a local folder (or clone this repo and select the `./src` directory).
+1. Download **[`cleanprint-studio-edge-chromium-v1.1.0.zip`](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/download/v1.1.0/cleanprint-studio-edge-chromium-v1.1.0.zip)** from [GitHub Releases (`v1.1.0`)](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/tag/v1.1.0) and unzip it to a local folder (or clone this repo and select the `./src` directory).
 2. Open your extensions management page:
    - **Chrome**: `chrome://extensions`
    - **Microsoft Edge**: `edge://extensions`
