@@ -397,9 +397,17 @@
 
     storageGet([QUEUE_KEY, LICENSE_KEY]).then(function (data) {
       var lic = data[LICENSE_KEY];
-      studioState.isPro = Boolean(sdkUnlocked || (lic && lic.unlocked));
+      studioState.isPro = Boolean(sdkUnlocked);
       studioState.clips = Array.isArray(data[QUEUE_KEY]) ? data[QUEUE_KEY] : [];
       renderAll();
+      if (!studioState.isPro && lic && typeof lic.key === 'string' && lic.key.trim().length >= 8 && root.CraftLeafSDK) {
+        root.CraftLeafSDK.verifyLicense('cleanPrintPro', lic.key.trim()).then(function (vRes) {
+          if (vRes && vRes.valid) {
+            studioState.isPro = true;
+            renderAll();
+          }
+        });
+      }
     });
 
     if (api && api.storage && api.storage.onChanged) {
@@ -479,7 +487,7 @@
         if (res && res.valid) {
           studioState.isPro = true;
           var patch = {};
-          patch[LICENSE_KEY] = { unlocked: true, key: res.key, mode: res.mode, unlockedAt: new Date().toISOString() };
+          patch[LICENSE_KEY] = { key: raw, mode: res.mode, cachedAt: new Date().toISOString() };
           storageSet(patch).then(function () {
             renderAll();
           });

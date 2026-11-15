@@ -351,11 +351,18 @@
       }
 
       var licObj = stored[LICENSE_KEY];
-      uiState.isPro = Boolean(sdkUnlocked || (licObj && licObj.unlocked));
-      if (sdkUnlocked && (!licObj || !licObj.unlocked)) {
-        var syncPatch = {};
-        syncPatch[LICENSE_KEY] = { unlocked: true, syncedFromSdk: true };
-        storageSet(syncPatch);
+      uiState.isPro = Boolean(sdkUnlocked);
+      if (!uiState.isPro && licObj && typeof licObj.key === 'string' && licObj.key.trim().length >= 8 && root.CraftLeafSDK) {
+        root.CraftLeafSDK.verifyLicense('cleanPrintPro', licObj.key.trim()).then(function (vRes) {
+          if (vRes && vRes.valid) {
+            uiState.isPro = true;
+            syncProVisualState();
+          } else if (vRes && vRes.reason !== 'network_error') {
+            var clearPatch = {};
+            clearPatch[LICENSE_KEY] = null;
+            storageSet(clearPatch);
+          }
+        });
       }
 
       if (stored[SETTINGS_KEY]) {
@@ -508,10 +515,9 @@
           uiState.isPro = true;
           var patch = {};
           patch[LICENSE_KEY] = {
-            unlocked: true,
-            key: result.key,
+            key: rawKey,
             mode: result.mode,
-            unlockedAt: new Date().toISOString()
+            cachedAt: new Date().toISOString()
           };
           storageSet(patch).then(function () {
             msgEl.textContent = t('keyValidMsg');

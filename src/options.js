@@ -65,10 +65,22 @@
       document.getElementById('optFontSize').value = String(prefs.fontSize || 12);
 
       var lic = data[LICENSE_KEY];
-      if (sdkUnlocked && (!lic || !lic.unlocked)) {
-        lic = { unlocked: true, mode: 'offline' };
+      if (sdkUnlocked) {
+        renderLicenseUi({ unlocked: true, mode: 'gumroad' });
+      } else if (lic && typeof lic.key === 'string' && lic.key.trim().length >= 8 && root.CraftLeafSDK) {
+        renderLicenseUi(null);
+        root.CraftLeafSDK.verifyLicense('cleanPrintPro', lic.key.trim()).then(function (vRes) {
+          if (vRes && vRes.valid) {
+            renderLicenseUi({ unlocked: true, mode: 'gumroad' });
+          } else if (vRes && vRes.reason !== 'network_error') {
+            var clearPatch = {};
+            clearPatch[LICENSE_KEY] = null;
+            storageSet(clearPatch);
+          }
+        });
+      } else {
+        renderLicenseUi(null);
       }
-      renderLicenseUi(lic);
     });
 
     document.getElementById('optBtnVerify').addEventListener('click', function () {
@@ -82,15 +94,14 @@
       root.CraftLeafSDK.verifyLicense('cleanPrintPro', raw, { keyPrefix: 'CLEANPRO' }).then(function (res) {
         if (res && res.valid) {
           var licObj = {
-            unlocked: true,
-            key: res.key,
+            key: raw,
             mode: res.mode,
-            unlockedAt: new Date().toISOString()
+            cachedAt: new Date().toISOString()
           };
           var patch = {};
           patch[LICENSE_KEY] = licObj;
           storageSet(patch).then(function () {
-            renderLicenseUi(licObj);
+            renderLicenseUi({ unlocked: true, mode: 'gumroad' });
           });
         } else {
           statusEl.textContent = 'Invalid license key. Expected CLEANPRO-XXXX-XXXX-XXXXXX or STUDIOALL-...';
