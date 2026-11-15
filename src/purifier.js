@@ -6,7 +6,7 @@
 (function (root) {
   'use strict';
 
-  if (root.__CleanPrintStudio && root.__CleanPrintStudio.version === '1.0.0') {
+  if (root.__CleanPrintStudio && root.__CleanPrintStudio.version === '1.1.0') {
     return;
   }
 
@@ -383,15 +383,15 @@
       if (turns.length) return turns;
     }
 
-    // 2. Claude / Copilot / Gemini turn selectors
+    // 2. Claude / Copilot / Gemini / DeepSeek / Perplexity turn selectors
     var combinedTurnNodes = doc.querySelectorAll(
-      '[data-testid="user-message"], .font-claude-message, [data-content="user-message"], [data-content="ai-message"], user-query, model-response, .copilot-chat-message'
+      '[data-testid="user-message"], .font-claude-message, [data-content="user-message"], [data-content="ai-message"], user-query, model-response, message-content, .copilot-chat-message, .ds-markdown, [class*="ds-chat-message" i], [data-testid*="query" i], [data-testid*="answer" i]'
     );
     if (combinedTurnNodes.length >= 1) {
       Array.prototype.forEach.call(combinedTurnNodes, function (node) {
         var testId = (node.getAttribute('data-testid') || node.getAttribute('data-content') || node.tagName || '').toLowerCase();
         var cls = String(node.className || '').toLowerCase();
-        var isUser = testId.indexOf('user') !== -1 || cls.indexOf('user') !== -1;
+        var isUser = testId.indexOf('user') !== -1 || testId.indexOf('query') !== -1 || cls.indexOf('user') !== -1 || cls.indexOf('query') !== -1;
         var turnBlocks = extractBlocksFromContainer(node);
         if (!turnBlocks.length) {
           var txt = (node.textContent || '').trim();
@@ -954,6 +954,16 @@
       }
     });
 
+    var mdBtn = el('button', {
+      type: 'button',
+      className: 'cp-tb-btn',
+      textContent: 'Export .md',
+      onClick: function () {
+        exportMarkdownFile(parsed);
+        clipFeedback.textContent = 'Saved .md!';
+      }
+    });
+
     var printBtn = el('button', {
       type: 'button',
       className: 'cp-tb-btn cp-tb-primary',
@@ -980,10 +990,86 @@
       fsLabel,
       plusBtn,
       clipBtn,
+      mdBtn,
       printBtn,
       exitBtn,
       clipFeedback
     ]);
+  }
+
+  function blocksToMarkdown(blocks) {
+    var out = [];
+    (blocks || []).forEach(function (b) {
+      if (b.type === 'qa-turn') {
+        var hdr = (b.role === 'user' ? '## Prompt #' : '## Response #') + b.turnIndex + ' (' + (b.speaker || '') + ')';
+        out.push(hdr + '\n\n' + blocksToMarkdown(b.blocks));
+      } else if (b.type === 'heading') {
+        var hashes = new Array(Math.min(6, Math.max(2, b.level || 2)) + 1).join('#');
+        out.push(hashes + ' ' + b.text);
+      } else if (b.type === 'paragraph') {
+        out.push(b.text);
+      } else if (b.type === 'code') {
+        out.push('```' + (b.lang && b.lang !== 'code' ? b.lang : '') + '\n' + b.text + '\n```');
+      } else if (b.type === 'quote') {
+        out.push('> ' + String(b.text || '').replace(/\n/g, '\n> '));
+      } else if (b.type === 'list') {
+        var lines = (b.items || []).map(function (it, idx) {
+          return (b.ordered ? (idx + 1) + '. ' : '- ') + it.text;
+        });
+        out.push(lines.join('\n'));
+      } else if (b.type === 'table' && b.rows && b.rows.length) {
+        var tLines = [];
+        b.rows.forEach(function (r, idx) {
+          var rowStr = '| ' + r.cells.map(function (c) { return String(c).replace(/\|/g, '\\|'); }).join(' | ') + ' |';
+          tLines.push(rowStr);
+          if (idx === 0) {
+            tLines.push('| ' + r.cells.map(function () { return '---'; }).join(' | ') + ' |');
+          }
+        });
+        out.push(tLines.join('\n'));
+      } else if (b.type === 'hr') {
+        out.push('---');
+      }
+    });
+    return out.join('\n\n');
+  }
+
+  function serializeParsedToMarkdown(parsed) {
+    var dateIso = new Date().toISOString();
+    var safeTitle = String((parsed && parsed.title) || 'CleanPrint Export').replace(/"/g, '\\"');
+    var fm = [
+      '---',
+      'title: "' + safeTitle + '"',
+      'source: "' + String((parsed && parsed.url) || '') + '"',
+      'platform: "' + String((parsed && parsed.platform) || 'Web') + '"',
+      'exported_at: "' + dateIso + '"',
+      'generator: "CleanPrint Studio v1.1.0"',
+      '---',
+      '',
+      '# ' + ((parsed && parsed.title) || 'CleanPrint Export'),
+      '',
+      blocksToMarkdown((parsed && parsed.blocks) || []),
+      ''
+    ];
+    return fm.join('\n');
+  }
+
+  function exportMarkdownFile(parsed) {
+    var src = parsed || state.lastParsed || parseDocument(document, document.location, false);
+    var mdText = serializeParsedToMarkdown(src);
+    var slug = String(src.title || 'cleanprint-export')
+      .toLowerCase()
+      .replace(/[^a-z0-9\u4e00-\u9fff]+/g, '-')
+      .replace(/^-+|-+$/g, '')
+      .slice(0, 60) || 'cleanprint-export';
+    var blob = new Blob([mdText], { type: 'text/markdown;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = el('a', { href: url, download: slug + '.md' });
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1500);
+    return mdText;
   }
 
   function buildClipObject(parsed) {
@@ -1142,9 +1228,10 @@
   }
 
   root.__CleanPrintStudio = {
-    version: '1.0.0',
+    version: '1.1.0',
     detectPlatform: detectPlatform,
     normalizeSettings: normalizeSettings,
+    serializeParsedToMarkdown: serializeParsedToMarkdown,
     getStatus: getStatus,
     activate: activate,
     updateSettings: updateSettings,
