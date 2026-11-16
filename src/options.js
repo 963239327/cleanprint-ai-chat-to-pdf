@@ -44,8 +44,8 @@
     if (licObj && licObj.unlocked) {
       badge.textContent = 'PRO LIFETIME UNLOCKED';
       badge.classList.add('pro');
-      inp.value = licObj.key || 'CLEANPRO-VERIFIED';
-      statusEl.textContent = 'Active Pro License (' + (licObj.mode || 'offline') + ' verified). All Multi-Tab & Booklet features unlocked.';
+      inp.value = licObj.key || '••••••••-GUMROAD-VERIFIED';
+      statusEl.textContent = 'Active Gumroad Pro License verified. All Multi-Tab & Booklet features unlocked.';
       statusEl.className = 'status-msg ok';
       resetBtn.classList.remove('hidden');
     } else {
@@ -87,11 +87,11 @@
       var raw = (document.getElementById('optLicenseInput').value || '').trim();
       var statusEl = document.getElementById('optLicenseStatus');
       if (!raw || !root.CraftLeafSDK) {
-        statusEl.textContent = 'Please enter a valid CLEANPRO-... or STUDIOALL-... key.';
+        statusEl.textContent = 'Please paste the Gumroad License Key from your receipt.';
         statusEl.className = 'status-msg err';
         return;
       }
-      root.CraftLeafSDK.verifyLicense('cleanPrintPro', raw, { keyPrefix: 'CLEANPRO' }).then(function (res) {
+      root.CraftLeafSDK.verifyLicense('cleanPrintPro', raw).then(function (res) {
         if (res && res.valid) {
           var licObj = {
             key: raw,
@@ -101,10 +101,12 @@
           var patch = {};
           patch[LICENSE_KEY] = licObj;
           storageSet(patch).then(function () {
-            renderLicenseUi({ unlocked: true, mode: 'gumroad' });
+            renderLicenseUi({ unlocked: true, mode: 'gumroad', key: raw });
           });
         } else {
-          statusEl.textContent = 'Invalid license key. Expected XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX or STUDIOALL-...';
+          statusEl.textContent = res && res.reason === 'network_error'
+            ? 'Network unreachable — please connect to verify your Gumroad License Key.'
+            : 'Invalid or refunded Gumroad License Key. Expected XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX.';
           statusEl.className = 'status-msg err';
         }
       });

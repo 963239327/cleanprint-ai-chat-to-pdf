@@ -121,7 +121,7 @@ The core reader purifier, AI-chat PDF exporter, font-size scaler, image hider, a
 | **Multi-Tab Print Queue + Automatic Linked Table of Contents** | — | ✅ | ✅ |
 | **4 Pro Typography & Layout Themes** *(Academic Serif, Minimalist Swiss, 2-Column Study Sheet, 2-Up Booklet)* | — | ✅ | ✅ |
 | **Marginless Browser URL / Date / Timestamp Header Remover** | — | ✅ | ✅ |
-| **Unlocks All 5 CraftLeaf Studio Pro Tools** *(CleanPrint, PasteShield, IDPhoto 4×6, Invoice Studio, CardSheet)* | — | — | ✅ (`STUDIOALL-...`) |
+| **Unlocks All 5 CraftLeaf Studio Pro Tools** *(CleanPrint, PasteShield, IDPhoto 4×6, Invoice Studio, CardSheet)* | — | — | ✅ (Gumroad Master Key) |
 
 - 🔑 **[Get CleanPrint Pro — $5.99 One-Time Lifetime Key (Zero Subscriptions)](https://stardustdemo.gumroad.com/l/cleanprint-pro)**
 - 🌟 **[Get CraftLeaf All-Access Pass — $19 Lifetime Master Key for All 5 Tools](https://stardustdemo.gumroad.com/l/craftleaf-all-access)**

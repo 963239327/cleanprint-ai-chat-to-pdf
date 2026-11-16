@@ -48,11 +48,11 @@
       optionsLink: 'Settings & Privacy',
       privacyFooter: 'Zero cloud uploads · Runs 100% offline in your browser',
       restrictedMsg: 'Browser internal page detected. Switch to any web article, GitHub doc, or AI chat (ChatGPT / Claude / Copilot) to purify & print.',
-      proRequiredHint: 'Enter your $5.99 CLEANPRO lifetime key below to unlock Multi-Tab Queue & Pro Themes.',
+      proRequiredHint: 'Paste your $5.99 Gumroad License Key below to unlock Multi-Tab Queue & Pro Themes.',
       clippedOk: 'Clipped to Print Queue! Total items: ',
       clippedSelOk: 'Clipped highlighted selection! Total items: ',
       keyValidMsg: 'Pro Studio Unlocked! Lifetime features active.',
-      keyInvalidMsg: 'Invalid key. Expected XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX or STUDIOALL-...'
+      keyInvalidMsg: 'Invalid or refunded Gumroad License Key (XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).'
     },
     zh: {
       clutterRemoved: '移除广告杂项',
@@ -87,11 +87,11 @@
       optionsLink: '偏好与隐私说明',
       privacyFooter: '零云端上传 · 100% 浏览器纯本地离线处理',
       restrictedMsg: '当前为浏览器系统内置页。请切换到任意网页文章、GitHub 文档或 ChatGPT / Claude / Copilot 对话页使用。',
-      proRequiredHint: '请在下方输入 CLEANPRO 终身激活码解锁跨标签合并队列与专业主题。',
+      proRequiredHint: '请在下方粘贴 Gumroad 订单回执上的 License Key 解锁跨标签合并队列与专业主题。',
       clippedOk: '已加入合并打印队列！当前共 ',
       clippedSelOk: '已截取选中内容入队！当前共 ',
       keyValidMsg: 'Pro 专业版已永久激活！全部高级功能已解锁。',
-      keyInvalidMsg: '激活码格式有误，请输入 CLEANPRO-... 或 STUDIOALL-... 密钥'
+      keyInvalidMsg: 'Gumroad 激活密钥无效或已退款，请核对订单回执上的 License Key'
     }
   };
 

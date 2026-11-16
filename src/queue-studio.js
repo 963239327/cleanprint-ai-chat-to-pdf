@@ -480,10 +480,10 @@
       var raw = (document.getElementById('inpStudioKey').value || '').trim();
       var msg = document.getElementById('studioGateMsg');
       if (!raw || !root.CraftLeafSDK) {
-        msg.textContent = 'Enter a valid CLEANPRO-... or STUDIOALL-... key.';
+        msg.textContent = 'Paste the Gumroad License Key from your CleanPrint Pro or All-Access receipt.';
         return;
       }
-      root.CraftLeafSDK.verifyLicense('cleanPrintPro', raw, { keyPrefix: 'CLEANPRO' }).then(function (res) {
+      root.CraftLeafSDK.verifyLicense('cleanPrintPro', raw).then(function (res) {
         if (res && res.valid) {
           studioState.isPro = true;
           var patch = {};
@@ -492,7 +492,9 @@
             renderAll();
           });
         } else {
-          msg.textContent = 'Invalid key checksum. Check XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX.';
+          msg.textContent = res && res.reason === 'network_error'
+            ? 'Network unreachable — connect to verify your Gumroad License Key.'
+            : 'Invalid or refunded Gumroad License Key (XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).';
         }
       });
     });
