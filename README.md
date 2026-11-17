@@ -2,12 +2,12 @@
 
 <img src="./assets/icon_128x128.png" alt="CleanPrint & AI-Chat to PDF Studio Logo" width="88" />
 
-# CleanPrint — Export ChatGPT, Claude, DeepSeek, Perplexity & Gemini to Clean Vector PDF & Markdown (`v1.1.0`)
+# CleanPrint — Export ChatGPT, Claude, DeepSeek, Perplexity & Gemini to Clean Vector PDF & Markdown (`v1.1.1`)
 
 **Export ChatGPT, Claude, DeepSeek, Perplexity & Gemini conversations to crisp vector PDFs (without cut-off code blocks) OR 1-click Obsidian/Notion Markdown (`.md`), using a 100% local dark-mode ink-saver browser extension.**
 
 [![Install on Mozilla Firefox Add-ons](https://img.shields.io/badge/Firefox_Add--ons-Official_AMO_Listing-FF7139?style=for-the-badge&logo=firefoxbrowser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/cleanprint-ai-chat-to-pdf/)
-[![Download Chrome / Edge / Brave ZIP](https://img.shields.io/badge/Chrome_%2F_Edge_%2F_Brave-Download_v1.1.0_.ZIP-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/download/v1.1.0/cleanprint-studio-edge-chromium-v1.1.0.zip)
+[![Download Chrome / Edge / Brave ZIP](https://img.shields.io/badge/Chrome_%2F_Edge_%2F_Brave-Download_v1.1.1_.ZIP-2563eb?style=for-the-badge&logo=googlechrome&logoColor=white)](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/download/v1.1.1/cleanprint-studio-edge-chromium-v1.1.1.zip)
 [![Interactive Web Preview](https://img.shields.io/badge/Interactive_Preview-Try_In_Browser-10b981?style=for-the-badge&logo=safari&logoColor=white)](https://963239327.github.io/craftleaf-studio/extensions/cleanprint/)
 [![CleanPrint Pro Lifetime](https://img.shields.io/badge/CleanPrint_Pro-%245.99_Lifetime_Key-f59e0b?style=for-the-badge)](https://stardustdemo.gumroad.com/l/cleanprint-pro)
 
@@ -16,7 +16,7 @@
 ![Zero innerHTML](https://img.shields.io/badge/CSP_Safe-Zero_innerHTML-0d9488)
 ![License MIT](https://img.shields.io/badge/License-MIT-brightgreen)
 
-[**Direct v1.1.0 Release →**](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/tag/v1.1.0) · [**Chrome / Edge / Brave `.zip` →**](#option-2-install-on-chrome-microsoft-edge-brave--arc-v110) · [**Interactive Web Preview →**](https://963239327.github.io/craftleaf-studio/extensions/cleanprint/) · [**CleanPrint Pro ($5.99) →**](#free-vs-cleanprint-pro-comparison)
+[**Direct v1.1.1 Release →**](https://github.com/963239327/cleanprint-ai-chat-to-pdf/releases/tag/v1.1.1) · [**Chrome / Edge / Brave `.zip` →**](#option-2-install-on-chrome-microsoft-edge-brave--arc-v110) · [**Interactive Web Preview →**](https://963239327.github.io/craftleaf-studio/extensions/cleanprint/) · [**CleanPrint Pro ($5.99) →**](#free-vs-cleanprint-pro-comparison)
 
 </div>
 

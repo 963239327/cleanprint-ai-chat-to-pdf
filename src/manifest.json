@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "CleanPrint & AI-Chat to PDF Studio",
   "short_name": "CleanPrint",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Export ChatGPT, Claude, DeepSeek, Perplexity & Gemini chats to crisp vector PDFs & Obsidian Markdown. 100% local, zero tracking.",
   "homepage_url": "https://963239327.github.io/craftleaf-studio/extensions/cleanprint/",
   "minimum_chrome_version": "109",
